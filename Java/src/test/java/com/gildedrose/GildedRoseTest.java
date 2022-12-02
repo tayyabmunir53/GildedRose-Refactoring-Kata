@@ -278,4 +278,70 @@ class GildedRoseTest {
     }
 
 
+    @Test
+    void conjured() {
+        Item[] items = new Item[] { new Item("Conjured", 10, 60) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(58, app.items[0].quality);
+        assertEquals(9, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(56, app.items[0].quality);
+        assertEquals(8, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(54, app.items[0].quality);
+        assertEquals(7, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(52, app.items[0].quality);
+        assertEquals(6, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(50, app.items[0].quality);
+        assertEquals(5, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(48, app.items[0].quality);
+        assertEquals(4, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(46, app.items[0].quality);
+        assertEquals(3, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(44, app.items[0].quality);
+        assertEquals(2, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(42, app.items[0].quality);
+        assertEquals(1, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(40, app.items[0].quality);
+        assertEquals(0, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(36, app.items[0].quality);
+        assertEquals(-1, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(32, app.items[0].quality);
+        assertEquals(-2, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(28, app.items[0].quality);
+        assertEquals(-3, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(24, app.items[0].quality);
+        assertEquals(-4, app.items[0].sellIn);
+        app.updateQuality();
+        assertEquals("Conjured", app.items[0].name);
+        assertEquals(20, app.items[0].quality);
+        assertEquals(-5, app.items[0].sellIn);
+    }
+
 }
