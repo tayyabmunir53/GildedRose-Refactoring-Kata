@@ -14,33 +14,7 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             updateQuality1(i);
-
-            updateSellin(i);
-
-            updateQualityWhenSellingDatePassed1(i);
         }
-    }
-
-
-    private void updateQualityWhenSellingDatePassed1(int i) {
-        if (items[i].sellIn < 0) {
-            switch (items[i].name) {
-                case BACKSTAGE_PASSES:
-                    items[i].quality = 0;
-                    break;
-                case SULFURUS:
-                    break;
-                case AGED_BERRIE:
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
-                    break;
-                default:
-                    items[i].quality = items[i].quality - 1;
-                    break;
-            }
-        }
-
     }
 
     private void updateSellin(int i) {
@@ -54,6 +28,7 @@ class GildedRose {
 
         switch (items[i].name){
             case BACKSTAGE_PASSES:
+                // before sell in
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
                 }
@@ -68,18 +43,43 @@ class GildedRose {
                         items[i].quality = items[i].quality + 1;
                     }
                 }
+                //
+                updateSellin(i);
+                // after sell in update
+                if (items[i].sellIn < 0) {
+                    items[i].quality = 0;
+                }
+                //
                 break;
             case SULFURUS:
                 break;
             case AGED_BERRIE:
+                //before sellin
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
                 }
+                //
+                updateSellin(i);
+                // after sell in update
+                if (items[i].sellIn < 0) {
+                    if (items[i].quality < 50) {
+                        items[i].quality = items[i].quality + 1;
+                    }
+                }
+                //
                break;
             default:
+                //before sell in
                 if (items[i].quality > 0) {
                     items[i].quality = items[i].quality - 1;
                 }
+                //
+                updateSellin(i);
+                // after sell in update
+                if (items[i].sellIn < 0) {
+                    items[i].quality = items[i].quality - 1;
+                }
+                //
                 break;
 
 
