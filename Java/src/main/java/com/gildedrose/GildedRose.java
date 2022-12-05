@@ -13,7 +13,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            updateQuality(i);
+            updateQuality1(i);
 
             updateSellin(i);
 
@@ -47,32 +47,44 @@ class GildedRose {
         }
     }
 
-    private void updateQuality(int i) {
-        if (!items[i].name.equals(AGED_BERRIE)
-                && !items[i].name.equals(BACKSTAGE_PASSES)) {
-            if (items[i].quality > 0) {
-                if (!items[i].name.equals(SULFURUS)) {
+
+    private void updateQuality1(int i) {
+
+        switch (items[i].name){
+            case BACKSTAGE_PASSES:
+                if (items[i].quality < 50) {
+                    items[i].quality = items[i].quality + 1;
+                }
+                if (items[i].sellIn < 11) {
+                    if (items[i].quality < 50) {
+                        items[i].quality = items[i].quality + 1;
+                    }
+                }
+
+                if (items[i].sellIn < 6) {
+                    if (items[i].quality < 50) {
+                        items[i].quality = items[i].quality + 1;
+                    }
+                }
+                break;
+            case SULFURUS:
+                break;
+            case AGED_BERRIE:
+                if (items[i].quality < 50) {
+                    items[i].quality = items[i].quality + 1;
+                }
+               break;
+            default:
+                if (items[i].quality > 0) {
                     items[i].quality = items[i].quality - 1;
                 }
-            }
-        } else {
-            if (items[i].quality < 50) {
-                items[i].quality = items[i].quality + 1;
+                break;
 
-                if (items[i].name.equals(BACKSTAGE_PASSES)) {
-                    if (items[i].sellIn < 11) {
-                        if (items[i].quality < 50) {
-                            items[i].quality = items[i].quality + 1;
-                        }
-                    }
 
-                    if (items[i].sellIn < 6) {
-                        if (items[i].quality < 50) {
-                            items[i].quality = items[i].quality + 1;
-                        }
-                    }
-                }
-            }
         }
+
+
     }
+
+
 }
