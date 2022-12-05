@@ -17,28 +17,30 @@ class GildedRose {
 
             updateSellin(i);
 
-            updateQualityWhenSellingDatePassed(i);
+            updateQualityWhenSellingDatePassed1(i);
         }
     }
 
-    private void updateQualityWhenSellingDatePassed(int i) {
+
+    private void updateQualityWhenSellingDatePassed1(int i) {
         if (items[i].sellIn < 0) {
-            if (!items[i].name.equals(AGED_BERRIE)) {
-                if (!items[i].name.equals(BACKSTAGE_PASSES)) {
-                    if (items[i].quality > 0) {
-                        if (!items[i].name.equals(SULFURUS)) {
-                            items[i].quality = items[i].quality - 1;
-                        }
-                    }
-                } else {
+            switch (items[i].name) {
+                case BACKSTAGE_PASSES:
                     items[i].quality = 0;
-                }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-                }
+                    break;
+                case SULFURUS:
+                    break;
+                case AGED_BERRIE:
+                    if (items[i].quality < 50) {
+                        items[i].quality = items[i].quality + 1;
+                    }
+                    break;
+                default:
+                    items[i].quality = items[i].quality - 1;
+                    break;
             }
         }
+
     }
 
     private void updateSellin(int i) {
