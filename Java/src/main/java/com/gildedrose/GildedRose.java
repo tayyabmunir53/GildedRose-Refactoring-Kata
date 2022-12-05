@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import static com.gildedrose.ProductNames.AGED_BERRIE;
 import static com.gildedrose.ProductNames.BACKSTAGE_PASSES;
+import static com.gildedrose.ProductNames.CONJURED_ITEMS;
 import static com.gildedrose.ProductNames.SULFURUS;
 
 class GildedRose {
@@ -68,6 +69,21 @@ class GildedRose {
                 }
                 //
                break;
+            case CONJURED_ITEMS:
+                //before sell in
+                if (items[i].quality > 0) {
+                    items[i].quality = items[i].quality - 1;
+                    items[i].quality = items[i].quality - 1;
+                }
+                //
+                updateSellin(i);
+                // after sell in update
+                if (items[i].sellIn < 0) {
+                    items[i].quality = items[i].quality - 1;
+                    items[i].quality = items[i].quality - 1;
+                }
+                //
+                break ;
             default:
                 //before sell in
                 if (items[i].quality > 0) {
